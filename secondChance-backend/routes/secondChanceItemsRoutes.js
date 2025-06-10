@@ -1,7 +1,7 @@
 const express = require('express')
 const multer = require('multer')
-const path = require('path')
-const fs = require('fs')
+// const path = require('path')
+// const fs = require('fs')
 const router = express.Router()
 const connectToDatabase = require('../models/db')
 const logger = require('../logger')
@@ -47,8 +47,8 @@ router.post('/', upload.single('file'), async (req, res, next) => {
     await lastItemQuery.forEach(item => {
       secondChanceItem.id = (parseInt(item.id) + 1).toString()
     })
-    const date_added = Math.floor(new Date().getTime() / 1000)
-    secondChanceItem.date_added = date_added
+    const dateAdded = Math.floor(new Date().getTime() / 1000)
+    secondChanceItem.dateAdded = dateAdded
 
     secondChanceItem = await collection.insertOne(secondChanceItem)
 
