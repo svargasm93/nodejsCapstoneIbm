@@ -23,7 +23,7 @@ app.post('/sentiment', async (req, res) => {
   // Initialize the sentiment analyzer with the Natural's PorterStemmer and "English" language
   const Analyzer = natural.SentimentAnalyzer
   const stemmer = natural.PorterStemmer
-  const analyzer = new Analyzer('English', stemmer, "afinn")
+  const analyzer = new Analyzer('English', stemmer, 'afinn')
 
   // Perform sentiment analysis
   try {
@@ -40,7 +40,7 @@ app.post('/sentiment', async (req, res) => {
     // Logging the result
     logger.info(`Sentiment analysis result: ${analysisResult}`)
     // Responding with the sentiment analysis result
-    res.status(200).json({ sentimentScore: analysisResult, sentiment: sentiment })
+    res.status(200).json({ sentimentScore: analysisResult, sentiment })
   } catch (error) {
     logger.error(`Error performing sentiment analysis: ${error}`)
     res.status(500).json({ message: 'Error performing sentiment analysis' })
